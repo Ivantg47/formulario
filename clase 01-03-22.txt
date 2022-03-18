@@ -1,0 +1,65 @@
+create user usuario1 with encrypted password 'hola123';
+
+\du //muestra los usurios de la DB y sus privilegios 
+
+create database formulario owner usuario1;
+
+\l //muestra el listado de las bases de datos
+
+psql -u usuario1 -d formulario
+
+/etc/postgresql/
+pg_hba.conf
+
+//comentar
+#local all all
+TIPO -> local o host
+typo	DB 			user	 	direccion 	METODO
+local 	formulario 	usuario1				md5
+
+\c + BD //conectarse a al usuario actual a cualquier base de datos 
+
+\dt //descripcion de las tablas de la bd
+
+su - postgres
+psql
+
+\c formulario
+create table usuario(id		serial 			primary key
+					 ,nombre	varchar(50)		not null
+					 ,apaterno	varchar(50)		not null
+					 ,amaterno	varchar(50)
+					 ,correo	varchar(50)
+					 );
+
+alter table usuario owner to usuario1;
+
+\d tabla //descripcion de tabla
+
+grant insert, select, update, delete, usuario_id_seq on usuario to usuario1
+
+\z mostrar privilegios de usuario 
+
+\q //salir
+
+//php lenguaje de programacion interpretado 
+
+
+$query = "SELECT * FROM TABLE";
+$result = pg_query($con, $query);
+//resultado a un arreglo
+$resp = pg_fetch_row($result);
+$resp = pg_fetch_array($rsult);
+
+pg_close($con);
+
+create table alumno(id_alumno		serial 			primary key
+					 ,nombre		varchar(50)		not null
+					 ,apaterno		varchar(50)		not null
+					 ,amaterno		varchar(50)		not null
+					 ,correo		varchar(50)		not null
+					 ,telefono		varchar(20)		not null
+					 ,no_cuenta		varchar(10)		not null
+					 ) owner usuario2;
+
+grant usage on alumno_id_alumno_seq, profesor_id_profesor_seq to usuario3;

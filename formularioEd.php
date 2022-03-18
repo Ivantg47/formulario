@@ -22,6 +22,8 @@ $resultado = pg_fetch_assoc($ejecucion);
 			<input type="text" name="amaterno" value="<?php echo $resultado['amaterno'];?>"><br />
 			<label for="email">Correo electrónico:</label>
 			<input type="email" name="correo" value="<?php echo $resultado['correo'];?>"><br />
+
+			<input type="hidden" name="id" value="<?php echo $resultado['id'];?>">
 			<input type="submit" name="Submit">
 		</form>
 	</body>

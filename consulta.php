@@ -13,6 +13,7 @@
 		<th>Apellido materno</th>
 		<th>Correo electronico</th>
 		<th>Edición</th>
+		<th>Borrado</th>
 	</tr>
 	<?php
 /*		while($row = pg_fetch_row($ejecucion)){
@@ -32,6 +33,7 @@
 			echo "<td>".$row['amaterno']."</td>";
 			echo "<td>".$row['correo']."</td>";
 			echo "<td><a href='formularioEd.php?id=".$row['id']."'>Editar</a></td>";
+			echo "<td><a href='formularioEl.php?id=".$row['id']."'>Borrar</a></td>";
 			echo "</tr>";
 		}
 	?>
