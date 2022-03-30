@@ -23,7 +23,7 @@
 			<input type="text" name="amaterno"><br />
 			<label for="email">Correo electrónico:</label>
 			<input type="email" name="correo"><br />
-			<input type="submit" name="Submit">
+			<input type="submit" name="enviar" value="Enviar">
 		</form>
 	</body>
 </html>

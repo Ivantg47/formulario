@@ -1,10 +1,14 @@
 <?php
+
+//verificar sesion
+if (isset($_SESSION['valida']) && $_SESSION['valida'] == true){
+
 //Consultar los registros y mostrar los en una tabla
-	include 'conexion.php';
+	include 'conexion2.php';
 	$query = "SELECT id, nombre, apaterno, amaterno, correo FROM usuario";
 	$ejecucion = pg_query($con, $query);
 //	var_dump($ejecucion);
-?>
+
 <table>
 	<tr>
 		<th>Id</th>
@@ -15,16 +19,7 @@
 		<th>Edición</th>
 		<th>Borrado</th>
 	</tr>
-	<?php
-/*		while($row = pg_fetch_row($ejecucion)){
-			echo "<tr>";
-			echo "<td>".$row[0]."</td>";
-			echo "<td>".$row[1]."</td>";
-			echo "<td>".$row[2]."</td>";
-			echo "<td>".$row[3]."</td>";
-			echo "</tr>";
-		}
-*/
+
 		while($row = pg_fetch_assoc($ejecucion)){
 			echo "<tr>";
 			echo "<td>".$row['id']."</td>";
@@ -36,5 +31,11 @@
 			echo "<td><a href='formularioEl.php?id=".$row['id']."'>Borrar</a></td>";
 			echo "</tr>";
 		}
+	} else {
+	header('Location: index.php?error=1');
+}
+	
 	?>
+
 </table>
+
