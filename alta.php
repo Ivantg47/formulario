@@ -9,7 +9,7 @@ $amaterno = strip_tags($_POST["amaterno"]);
 $correo = strip_tags($_POST["correo"]);
 
 //validacion
-if (preg_match('/[a-z áéíóúñü]{2,50}/ig', $nombre)) {
+if (preg_match('/[a-z áéíóúñü]{2,50}/i', $nombre)) {
 	echo "Es un nombre valido";
 }else{
 	header('Location: formulario.php?error=1');
