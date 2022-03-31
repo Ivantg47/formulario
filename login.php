@@ -1,7 +1,7 @@
 <?php
 //conexion a la bd
 
-include ('conexion.php');
+include ('conexion2.php');
 
 //Recibe usuario y contraseña para validar
 $usuario = strip_tags($_POST['usuario']);

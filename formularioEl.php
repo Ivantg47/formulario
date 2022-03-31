@@ -1,39 +1,53 @@
 <?php
-include 'conexion.php';
-$id = $_GET['id'];
-$query = "SELECT id, nombre, apaterno, amaterno, correo FROM usuario where id=".$id;
-$ejecucion = pg_query($con, $query);
-$resultado = pg_fetch_assoc($ejecucion);
+	session_start();
+	if (isset($_SESSION['valida']) && $_SESSION['valida'] == true){
+
+		include 'conexion.php';
+		$id = $_GET['id'];
+		$query = "SELECT id, nombre, apaterno, amaterno, correo FROM usuario where id=".$id;
+		$ejecucion = pg_query($con, $query);
+		$resultado = pg_fetch_assoc($ejecucion);
+		
+		//var_dump($ejecucion);
+		
 ?>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-	</head>
-	<body>
-		<p>El siguiente registro sera eliminado:</p>
-		<table>
-			<tr>
-				<!--<th>Id</th>-->
-				<th>Nombre</th>
-				<th>Apellido paterno</th>
-				<th>Apellido materno</th>
-				<th>Correo electronico</th>
-			</tr>
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<meta charset="utf-8">
+			</head>
+			<body>
+				<p>El siguiente registro sera eliminado:</p>
+				<table>
+					<tr>
+						<!--<th>Id</th>-->
+						<th>Nombre</th>
+						<th>Apellido paterno</th>
+						<th>Apellido materno</th>
+						<th>Correo electronico</th>
+					</tr>
 
-			<tr>
-				<!--<td><?php echo $resultado['id'];?></td>-->
-				<td><?= $resultado['nombre'];?></td>
-				<td><?= $resultado['apaterno'];?></td>
-				<td><?= $resultado['amaterno'];?></td>
-				<td><?= $resultado['correo'];?></td>
-			</tr>
-		</table>
+					<tr>
+						<!--<td><?php echo $resultado['id'];?></td>-->
+						<td><?= $resultado['nombre'];?></td>
+						<td><?= $resultado['apaterno'];?></td>
+						<td><?= $resultado['amaterno'];?></td>
+						<td><?= $resultado['correo'];?></td>
+					</tr>
+				</table>
 
-		<form name="eliminar" action="borrar.php" method="post">
-			<input type="hidden" name="id" value="<?= $resultado['id'];?>">
-			<input type="submit" name="Eliminar">
-		</form>
-	</body>
-</html>
+				<form name="eliminar" action="borrar.php" method="post">
+					<input type="hidden" name="id" value="<?= $resultado['id'];?>">
+					<input type="submit" name="eliminar" value="Eliminar">
+				</form>
+				<input type="submit" onclick="location='salir.php'" value="Salir">
+			</body>
+		</html>
+<?php 
+	} else {
+
+		header('Location: index.php?error=1');
+	
+	}
+?>
